@@ -111,8 +111,12 @@ class AlgoStrategy(gamelib.AlgoCore):
     
     def ez_rekt_reactive_defence(self, game_state):
         for location in self.scored_on_locations:
-            build_location = [location[0], location[1]+3]
-            game_state.attempt_spawn(DESTRUCTOR, build_location)
+            scrambler_build_location = [location[0], location[1]]
+            destructor_build_location = [location[0], location[1]+3]
+            
+            game_state.attempt_spawn(SCRAMBLER, scrambler_build_location)
+            game_state.attempt_spawn(DESTRUCTOR, destructor_build_location, 2)
+
     
     def ez_rekt_defence_rebuild_base(self, game_state):
         destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11]]
@@ -127,11 +131,11 @@ class AlgoStrategy(gamelib.AlgoCore):
             layer_stage = game_state.turn_number % 3
 
             if layer_stage == 1:
-                destructor_locations = [[11, 8], [16, 8]]
+                destructor_locations = [[11, 9], [16, 9]]
             if layer_stage == 2:
-                destructor_locations = [[9, 6], [18, 6]]
+                destructor_locations = [[9, 7], [18, 7]]
             if layer_stage == 0:
-                destructor_locations = [[12, 4], [15, 4]]
+                destructor_locations = [[12, 5], [15, 5]]
             
             game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
 
