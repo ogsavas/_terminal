@@ -67,11 +67,9 @@ class AlgoStrategy(gamelib.AlgoCore):
         destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11]]
         game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
 
-        # Place filters in front of destructors to soak up damage for them
         filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12]]
         game_state.attempt_spawn(FILTER, filter_locations)
 
-        # Place filters in front of destructors to soak up damage for them
         encryptor_locations = [[12, 3], [13, 2], [14, 2], [15, 3]]
         game_state.attempt_spawn(ENCRYPTOR, encryptor_locations)
 
@@ -99,10 +97,50 @@ class AlgoStrategy(gamelib.AlgoCore):
         elif game_state.turn_number > 2:
             self.ez_bottom_attack(game_state)
     
+    def ez_rekt_reactive_defence(self, game_state):
+        for location in self.scored_on_locations:
+            build_location = [location[0], location[1]+3]
+            game_state.attempt_spawn(DESTRUCTOR, build_location)
+    
+    def ez_rekt_defence_rebuild_base(self, game_state):
+        destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11]]
+        game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
+
+        filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12]]
+        game_state.attempt_spawn(FILTER, filter_locations)
+
+    
+    def ez_rekt_defence_layer_destructor(self, game_state):
+        if game_state.turn_number > 0:
+            layer_stage = game_state.turn_number % 3
+
+            if layer_stage == 1:
+                destructor_locations = [[11, 8], [16, 8]]
+            if layer_stage == 2:
+                destructor_locations = [[9, 6], [18, 6]]
+            if layer_stage == 0:
+                destructor_locations = [[12, 4], [15, 4]]
+            
+            game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
+
+    def ez_rekt_defence_rand_filters(self, game_state):
+        while( game_state.get_resource(game_state.CORES) > 17 ):
+            filter_location = [[random.randint(7, 21), random.randint(7, 14)]]
+            game_state.attempt_spawn(FILTER, filter_location)
+
+
+    def ez_rekt_defence(self, game_state):
+        self.ez_rekt_reactive_defence(game_state)
+        self.ez_rekt_defence_rebuild_base(game_state)
+        self.ez_rekt_defence_layer_destructor(game_state)
+        self.ez_rekt_defence_rand_filters(game_state)
+
     def ez_rekt_strategy(self, game_state):
         if not game_state.turn_number:
             self.ez_rekt_setup(game_state)
+            return
 
+        self.ez_rekt_defence(game_state)
         self.ez_rekt_offence(game_state)
 
 
