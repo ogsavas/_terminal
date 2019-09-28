@@ -66,6 +66,13 @@ class AlgoStrategy(gamelib.AlgoCore):
     def round_one(self, game_state):
         destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11]]
         game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
+        # Place filters in front of destructors to soak up damage for them
+        filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12]]
+        game_state.attempt_spawn(FILTER, filter_locations)
+
+        # Place filters in front of destructors to soak up damage for them
+        encryptor_locations = [[12, 3], [13, 2], [14, 2], [15, 3]]
+        game_state.attempt_spawn(ENCRYPTOR, encryptor_locations)
     
     def ez_rekt_strategy(self, game_state):
         if not game_state.turn_number:
