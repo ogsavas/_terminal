@@ -113,7 +113,7 @@ class AlgoStrategy(gamelib.AlgoCore):
                 if done == 3:
                     break
         
-        if game_state.contains_stationary_unit([22, 8]):
+        if game_state.contains_stationary_unit([21, 8]):
             self.ez_back_end_attack(game_state)
         elif game_state.turn_number > 2:
             self.ez_bottom_attack(game_state)
