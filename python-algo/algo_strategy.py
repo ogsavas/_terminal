@@ -142,7 +142,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     
     def ez_rekt_defence_rebuild_base(self, game_state):
-        destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11], [25, 12], [24, 12], [23, 11], [22, 10]]
+        destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11], [25, 12], [24, 12], [23, 11], [22, 10], [3, 13], [4, 13], [5, 13]]
         game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
 
         filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12]]
@@ -150,17 +150,16 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     
     def ez_rekt_defence_layer_destructor(self, game_state):
-        if game_state.turn_number > 0:
-            layer_stage = game_state.turn_number % 3
+        layer_stage = game_state.turn_number % 3
 
-            if layer_stage == 1:
-                destructor_locations = [[11, 9], [16, 9]]
-            if layer_stage == 2:
-                destructor_locations = [[9, 7], [18, 7]]
-            if layer_stage == 0:
-                destructor_locations = [[12, 5], [15, 5]]
-            
-            game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
+        if layer_stage == 1:
+            destructor_locations = [[11, 9], [12, 9], [13, 9], [14, 9], [15, 9], [16, 9]]
+        if layer_stage == 2:
+            destructor_locations = [[10, 12], [11, 12], [12, 12], [15, 12], [16, 12], [17, 12]]
+        if layer_stage == 0:
+            destructor_locations = [[12, 5], [15, 5]]
+        
+        game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
 
     def ez_rekt_defence_rand(self, game_state):
         while( game_state.get_resource(game_state.CORES) > 17 ):
