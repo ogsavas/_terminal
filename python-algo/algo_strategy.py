@@ -103,7 +103,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             destructor_build_location = [location[0], location[1]+3]
             
             game_state.attempt_spawn(SCRAMBLER, scrambler_build_location)
-            game_state.attempt_spawn(DESTRUCTOR, destructor_build_location)
+            game_state.attempt_spawn(DESTRUCTOR, destructor_build_location, 2)
 
     
     def ez_rekt_defence_rebuild_base(self, game_state):
