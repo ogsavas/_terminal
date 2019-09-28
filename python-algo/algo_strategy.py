@@ -64,8 +64,8 @@ class AlgoStrategy(gamelib.AlgoCore):
         game_state.submit_turn()
 
     def round_one(self, game_state):
-        # for cuntgun to code
-        pass
+        destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11]]
+        game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
     
     def ez_rekt_strategy(self, game_state):
         if not game_state.turn_number:
