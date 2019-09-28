@@ -107,6 +107,8 @@ class AlgoStrategy(gamelib.AlgoCore):
             done = 0
             for loc in encryptor_locs:
                 loc[1] += 1
+                if loc == [13, 0]:
+                    continue
                 done += game_state.attempt_spawn(ENCRYPTOR, loc)
                 if done == 3:
                     break
