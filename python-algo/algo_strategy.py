@@ -142,7 +142,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     
     def ez_rekt_defence_rebuild_base(self, game_state):
-        destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11]]
+        destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11], [25, 12], [24, 12], [23, 11], [22, 10]]
         game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
 
         filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12]]
