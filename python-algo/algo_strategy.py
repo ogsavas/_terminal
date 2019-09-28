@@ -80,7 +80,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         # WE GOIN ALL INNNN BROOOOO
         game_state.attempt_spawn(EMP, [21, 7], 1)
-        game_state.attempt_spawn(PING, [20, 6], 1000)
+        #game_state.attempt_spawn(PING, [20, 6], 1000)
 
 
     def ez_bottom_attack(self, game_state):
@@ -89,8 +89,8 @@ class AlgoStrategy(gamelib.AlgoCore):
             return
 
         # WE GOIN ALL INNNN BROOOOO
-        game_state.attempt_spawn(PING, [14, 0], 6)
-        game_state.attempt_spawn(EMP, [15, 1], 1)
+        game_state.attempt_spawn(PING, [14, 0], 1000)
+        #game_state.attempt_spawn(EMP, [15, 1], 1)
 
     def ez_rekt_offence(self, game_state):
         encryptor_locs = [[13, 2], [14, 2], [15, 3], [16, 4], [17, 5], [18, 6], 
