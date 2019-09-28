@@ -57,9 +57,19 @@ class AlgoStrategy(gamelib.AlgoCore):
         gamelib.debug_write('Performing turn {} of your custom algo strategy'.format(game_state.turn_number))
         game_state.suppress_warnings(True)  #Comment or remove this line to enable warnings.
 
-        self.starter_strategy(game_state)
+        self.ez_rekt_strategy(game_state)
+
+        #self.starter_strategy(game_state)
 
         game_state.submit_turn()
+
+    def round_one(self, game_state):
+        # for cuntgun to code
+        pass
+    
+    def ez_rekt_strategy(self, game_state):
+        if not game_state.turn_number:
+            self.round_one(game_state)
 
 
     """
