@@ -74,10 +74,22 @@ class AlgoStrategy(gamelib.AlgoCore):
         game_state.attempt_spawn(ENCRYPTOR, encryptor_locations)
 
     def ez_back_end_attack(self, game_state):
-        game_state.attempt_spawn(EMP, [21, 7])
+        bits = game_state.get_resource(game_state.BITS)
+        if bits < 7:
+            return
+
+        # WE GOIN ALL INNNN BROOOOO
+        game_state.attempt_spawn(PING, [20, 6], 3)
+        game_state.attempt_spawn(EMP, [21, 7], 1000)
 
     def ez_bottom_attack(self, game_state):
-        pass
+        bits = game_state.get_resource(game_state.BITS)
+        if bits < 7:
+            return
+
+        # WE GOIN ALL INNNN BROOOOO
+        game_state.attempt_spawn(PING, [14, 0], 3)
+        game_state.attempt_spawn(EMP, [15, 1], 3)
 
     def ez_rekt_offence(self, game_state):
         encryptor_locs = [[13, 2], [14, 2], [15, 3], [16, 4], [17, 5], [18, 6], 
