@@ -88,7 +88,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             return
 
         # WE GOIN ALL INNNN BROOOOO
-        game_state.attempt_spawn(PING, [14, 0], 1000)
+        game_state.attempt_spawn(PING, [15, 1], 1000)
 
     def ez_rekt_offence(self, game_state):
         encryptor_locs = [[13, 2], [14, 2], [13, 0], [15, 3], [16, 4], [17, 5], [18, 6], 
