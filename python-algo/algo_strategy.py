@@ -63,9 +63,10 @@ class AlgoStrategy(gamelib.AlgoCore):
 
         game_state.submit_turn()
 
-    def round_one(self, game_state):
+    def ez_rekt_setup(self, game_state):
         destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11]]
         game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
+
         # Place filters in front of destructors to soak up damage for them
         filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12]]
         game_state.attempt_spawn(FILTER, filter_locations)
@@ -73,10 +74,36 @@ class AlgoStrategy(gamelib.AlgoCore):
         # Place filters in front of destructors to soak up damage for them
         encryptor_locations = [[12, 3], [13, 2], [14, 2], [15, 3]]
         game_state.attempt_spawn(ENCRYPTOR, encryptor_locations)
+
+    def ez_back_end_attack(self, game_state):
+        game_state.attempt_spawn(EMP, [21, 7])
+
+    def ez_bottom_attack(self, game_state):
+        pass
+
+    def ez_rekt_offence(self, game_state):
+        encryptor_locs = [[13, 2], [14, 2], [15, 3], [16, 4], [17, 5], [18, 6], 
+            [19, 7], [20, 8], [21, 8], [22, 8], [12, 3], [11, 4], [10, 5], [9, 6], 
+            [8, 7], [7, 8], [6, 9]]
+        # Place some encryptors for increased damage if we have more than 5 cores
+        place_count = 0
+        i = 0
+        while (place_count <= 10 
+            and game_state.get_resource(game_state.CORES) > 3
+            and i < len(encryptor_locs)):
+            place_count += game_state.attempt_spawn(ENCRYPTOR, [encryptor_locs[i]])
+            i += 1
+        
+        if game_state.contains_stationary_unit([22, 8]):
+            self.ez_back_end_attack(game_state)
+        elif game_state.turn_number > 2:
+            self.ez_bottom_attack(game_state)
     
     def ez_rekt_strategy(self, game_state):
         if not game_state.turn_number:
-            self.round_one(game_state)
+            self.ez_rekt_setup(game_state)
+
+        self.ez_rekt_offence(game_state)
 
 
     """
