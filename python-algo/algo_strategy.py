@@ -145,17 +145,20 @@ class AlgoStrategy(gamelib.AlgoCore):
             
             game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
 
-    def ez_rekt_defence_rand_filters(self, game_state):
+    def ez_rekt_defence_rand(self, game_state):
         while( game_state.get_resource(game_state.CORES) > 17 ):
-            filter_location = [[random.randint(7, 21), random.randint(7, 14)]]
-            game_state.attempt_spawn(FILTER, filter_location)
+            rand_location = [[random.randint(7, 21), random.randint(10, 14)]]
+            if random.randint(0, 2):
+                game_state.attempt_spawn(FILTER, rand_location)
+            else:
+                game_state.attempt_spawn(DESTRUCTOR, rand_location)
 
 
     def ez_rekt_defence(self, game_state):
         self.ez_rekt_reactive_defence(game_state)
         self.ez_rekt_defence_rebuild_base(game_state)
         self.ez_rekt_defence_layer_destructor(game_state)
-        self.ez_rekt_defence_rand_filters(game_state)
+        self.ez_rekt_defence_rand(game_state)
 
     def ez_rekt_strategy(self, game_state):
         if not game_state.turn_number:
