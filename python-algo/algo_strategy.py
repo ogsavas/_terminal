@@ -87,8 +87,8 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     
     def ez_rekt_defence_layer_destructor(self, game_state):
-        if layer_stage > 0:
-            layer_stage = game_state.turn_number % 3:
+        if game_state.turn_number > 0:
+            layer_stage = game_state.turn_number % 3
 
             if layer_stage == 1:
                 destructor_locations = [[11, 8], [16, 8]]
@@ -100,7 +100,7 @@ class AlgoStrategy(gamelib.AlgoCore):
             game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
 
     def ez_rekt_defence_rand_filters(self, game_state):
-        while( game_state.get_resource(game_state.CORE) > 17 ):
+        while( game_state.get_resource(game_state.CORES) > 17 ):
             filter_location = [[random.randint(7, 21), random.randint(7, 14)]]
             game_state.attempt_spawn(FILTER, filter_location)
 
