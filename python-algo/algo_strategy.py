@@ -114,6 +114,8 @@ class AlgoStrategy(gamelib.AlgoCore):
     def ez_rekt_strategy(self, game_state):
         if not game_state.turn_number:
             self.ez_rekt_setup(game_state)
+            return
+        self.ez_rekt_defence(game_state)
 
 
     """
