@@ -84,11 +84,11 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     def ez_bottom_attack(self, game_state):
         bits = game_state.get_resource(game_state.BITS)
-        if bits < 10 + game_state.turn_number // 5:
+        if bits < 10 + game_state.turn_number // 3:
             return
 
         # WE GOIN ALL INNNN BROOOOO
-        game_state.attempt_spawn(PING, [14, 0], 1000)
+        game_state.attempt_spawn(PING, [15, 1], 1000)
 
     def ez_rekt_offence(self, game_state):
         encryptor_locs = [[13, 2], [14, 2], [13, 0], [15, 3], [16, 4], [17, 5], [18, 6], 
