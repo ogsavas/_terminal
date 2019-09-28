@@ -75,27 +75,25 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     def ez_back_end_attack(self, game_state):
         bits = game_state.get_resource(game_state.BITS)
-        if bits < 10 + game_state.turn_number % 5:
+        if bits < 10 + game_state.turn_number // 5:
             return
 
         # WE GOIN ALL INNNN BROOOOO
-        game_state.attempt_spawn(EMP, [21, 7], 1)
         game_state.attempt_spawn(PING, [20, 6], 1000)
 
 
     def ez_bottom_attack(self, game_state):
         bits = game_state.get_resource(game_state.BITS)
-        if bits < 10 + game_state.turn_number % 5:
+        if bits < 10 + game_state.turn_number // 5:
             return
 
         # WE GOIN ALL INNNN BROOOOO
-        game_state.attempt_spawn(PING, [14, 0], 6)
-        game_state.attempt_spawn(EMP, [15, 1], 1)
+        game_state.attempt_spawn(PING, [14, 0], 1000)
 
     def ez_rekt_offence(self, game_state):
-        encryptor_locs = [[13, 2], [14, 2], [15, 3], [16, 4], [17, 5], [18, 6], 
-            [19, 7], [20, 8], [21, 8], [22, 8], [12, 3], [11, 4], [10, 5], [9, 6], 
-            [8, 7], [7, 8], [6, 9], [5, 10], [4, 11], [4, 12], [3, 13]]
+        encryptor_locs = [[13, 2], [14, 2], [13, 0], [15, 3], [16, 4], [17, 5], [18, 6], 
+            [19, 7], [20, 8], [21, 8], [12, 3], [11, 4], [10, 5], [9, 6], 
+            [8, 7], [7, 8], [6, 9], [5, 10], [4, 11], [4, 12]]
         # Place some encryptors for increased damage if we have more than 5 cores
         place_count = 0
         i = 0
