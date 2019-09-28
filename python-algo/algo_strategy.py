@@ -124,14 +124,14 @@ class AlgoStrategy(gamelib.AlgoCore):
                 filter_build_location = [[location[0]-3, location[1]+4], 
                                          [location[0]-5, location[1]+1],
                                          [location[0]-3, location[1]+3], 
-                                         [location[0]-4, location[1]+2]]
+                                         [location[0]-4, location[1]+3]]
                 destructor_build_locations = [[location[0]-2, location[1]+4],
                                               [location[0]-3, location[1]+3]]
             else:
                 filter_build_location = [[location[0]+2, location[1]+4], 
                                          [location[0]+5, location[1]+1],
                                          [location[0]+3, location[1]+3], 
-                                         [location[0]+4, location[1]+2]]
+                                         [location[0]+4, location[1]+3]]
 
                 destructor_build_locations = [[location[0]+2, location[1]+4],
                                               [location[0]+3, location[1]+3]]
