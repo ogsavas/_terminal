@@ -75,7 +75,7 @@ class AlgoStrategy(gamelib.AlgoCore):
 
     def ez_back_end_attack(self, game_state):
         bits = game_state.get_resource(game_state.BITS)
-        if bits < 7:
+        if bits < 7 + game_state.turn_number % 5:
             return
 
         # WE GOIN ALL INNNN BROOOOO
