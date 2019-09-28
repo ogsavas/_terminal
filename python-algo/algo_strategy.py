@@ -122,16 +122,17 @@ class AlgoStrategy(gamelib.AlgoCore):
         for location in self.scored_on_locations:
             if location[0] > 13:
                 filter_build_location = [[location[0]-2, location[1]+4], 
+                                         [location[0]-5, location[1]+1],
                                          [location[0]-3, location[1]+3], 
-                                         [location[0]-4, location[1]+2],
-                                         [location[0]-5, location[1]+1]]
+                                         [location[0]-4, location[1]+2]]
                 destructor_build_locations = [[location[0], location[1]],
                                               [location[0]-1, location[1]-1]]
             else:
                 filter_build_location = [[location[0]+2, location[1]+4], 
+                                         [location[0]+5, location[1]+1],
                                          [location[0]+3, location[1]+3], 
-                                         [location[0]+4, location[1]+2],
-                                         [location[0]+5, location[1]+1]]
+                                         [location[0]+4, location[1]+2]]
+]
                 destructor_build_locations = [[location[0], location[1]],
                                               [location[0]+1, location[1]-1]]
             
