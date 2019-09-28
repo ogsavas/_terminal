@@ -132,7 +132,7 @@ class AlgoStrategy(gamelib.AlgoCore):
                                          [location[0]+5, location[1]+1],
                                          [location[0]+3, location[1]+3], 
                                          [location[0]+4, location[1]+2]]
-]
+
                 destructor_build_locations = [[location[0], location[1]],
                                               [location[0]+1, location[1]-1]]
             
