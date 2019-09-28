@@ -103,6 +103,12 @@ class AlgoStrategy(gamelib.AlgoCore):
             and i < len(encryptor_locs)):
             place_count += game_state.attempt_spawn(ENCRYPTOR, [encryptor_locs[i]])
             i += 1
+
+        if game_state.get_resource(game_state.CORES > 5):
+            for _ in range(3):
+                loc = random.choice(encryptor_locs)
+                loc[1] += 1
+                game_state.attempt_spawn(ENCRYPTOR, loc)
         
         if game_state.contains_stationary_unit([22, 8]):
             self.ez_back_end_attack(game_state)
