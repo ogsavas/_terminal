@@ -67,7 +67,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11]]
         game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
 
-        filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12]]
+        filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12], [3, 13], [4, 12]]
         game_state.attempt_spawn(FILTER, filter_locations)
 
         encryptor_locations = [[12, 3], [13, 2], [14, 2], [15, 3]]
@@ -141,7 +141,7 @@ class AlgoStrategy(gamelib.AlgoCore):
         destructor_locations = [[2, 11], [5, 12], [6, 9], [9, 11], [13, 11], [14, 11], [18, 11], [21, 9], [22, 12], [25, 11]]
         game_state.attempt_spawn(DESTRUCTOR, destructor_locations)
 
-        filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12]]
+        filter_locations = [[0, 13], [1, 12], [27, 13], [26, 12], [3, 13], [4, 12]]
         game_state.attempt_spawn(FILTER, filter_locations)
 
     
